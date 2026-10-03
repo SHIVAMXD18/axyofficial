@@ -25,20 +25,20 @@ const updateImageInput = $("#updateImage");
 
 $("#year").textContent = new Date().getFullYear();
 
-if (menuButton && navLinks) {
-  menuButton.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("open");
-    menuButton.setAttribute("aria-expanded", String(isOpen));
-  });
+/* Mobile menu */
+menuButton.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+});
 
-  navLinks.addEventListener("click", (event) => {
-    if (event.target.closest("a")) {
-      navLinks.classList.remove("open");
-      menuButton.setAttribute("aria-expanded", "false");
-    }
-  });
-}
+navLinks.addEventListener("click", (event) => {
+  if (event.target.closest("a")) {
+    navLinks.classList.remove("open");
+    menuButton.setAttribute("aria-expanded", "false");
+  }
+});
 
+/* Safe text and URL helpers */
 function escapeHtml(value) {
   return String(value ?? "").replace(/[&<>"']/g, (character) => ({
     "&": "&amp;",
@@ -60,6 +60,7 @@ function safeWebUrl(value) {
   }
 }
 
+/* Supabase updates */
 function updateCardHtml(update, showDelete = false) {
   const imageUrl = update.image_url ? safeWebUrl(update.image_url) : null;
   const imageHtml = imageUrl
@@ -132,10 +133,7 @@ async function loadAdminUpdates() {
 async function setAdminView(isLoggedIn) {
   loginForm.hidden = isLoggedIn;
   publisher.hidden = !isLoggedIn;
-
-  if (isLoggedIn) {
-    await loadAdminUpdates();
-  }
+  if (isLoggedIn) await loadAdminUpdates();
 }
 
 async function checkExistingSession() {
@@ -161,8 +159,7 @@ loginForm.addEventListener("submit", async (event) => {
   });
 
   if (error) {
-    loginMessage.textContent =
-      "Login failed. Check the Supabase Auth email and password.";
+    loginMessage.textContent = "Login failed. Check Supabase Auth email and password.";
     return;
   }
 
@@ -171,14 +168,10 @@ loginForm.addEventListener("submit", async (event) => {
   await setAdminView(Boolean(data.session));
 
   $("#admin").scrollIntoView({ behavior: "smooth", block: "start" });
-
   setTimeout(() => {
-    $("#updateTitle").scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
+    $("#updateTitle").scrollIntoView({ behavior: "smooth", block: "center" });
     $("#updateTitle").focus({ preventScroll: true });
-  }, 450);
+  }, 400);
 });
 
 updateForm.addEventListener("submit", async (event) => {
@@ -195,10 +188,8 @@ updateForm.addEventListener("submit", async (event) => {
 
   if (buttonText || rawButtonUrl) {
     buttonUrl = safeWebUrl(rawButtonUrl);
-
     if (!buttonText || !buttonUrl) {
-      publishMessage.textContent =
-        "Button ke liye text aur valid http/https link dono bharo.";
+      publishMessage.textContent = "Button ke liye text aur valid http/https link dono bharo.";
       return;
     }
   }
@@ -206,12 +197,7 @@ updateForm.addEventListener("submit", async (event) => {
   let imageUrl = null;
 
   if (imageFile) {
-    const allowedTypes = [
-      "image/jpeg",
-      "image/png",
-      "image/webp",
-      "image/gif"
-    ];
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 
     if (!allowedTypes.includes(imageFile.type)) {
       publishMessage.textContent = "JPG, PNG, WEBP, ya GIF image choose karo.";
@@ -235,11 +221,12 @@ updateForm.addEventListener("submit", async (event) => {
         contentType: imageFile.type
       });
 
-if (uploadError) {
-  console.error("Supabase image upload error:", uploadError);
-  publishMessage.textContent = `Image upload error: ${uploadError.message}`;
-  return;
-}
+    if (uploadError) {
+      console.error("Image upload error:", uploadError);
+      publishMessage.textContent = `Image upload nahi hui: ${uploadError.message}`;
+      return;
+    }
+
     const { data: imageData } = supabaseClient
       .storage
       .from("updates-images")
@@ -259,8 +246,8 @@ if (uploadError) {
     });
 
   if (error) {
-    publishMessage.textContent =
-      "Publish nahi hua. Admin UID aur Supabase policies check karo.";
+    console.error("Publish error:", error);
+    publishMessage.textContent = "Publish nahi hua. Admin UID aur Supabase policies check karo.";
     return;
   }
 
@@ -296,44 +283,33 @@ logoutButton.addEventListener("click", async () => {
   $("#admin").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
-loadPublicUpdates();
-checkExistingSession();
-
+/* YouTube playlist and live listener presence */
 const RADIO_PLAYLIST_ID = "PLgObA3pAqvOh87Z03QG8Z4xE-uqlAWSBy";
-const listenerCountElement = document.querySelector("#listenerCount");
-
+const listenerCountElement = $("#listenerCount");
 let radioPlayer;
 let radioChannel;
 let isListening = false;
-
 const presenceKey = `axy-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
 function updateListenerCount() {
   if (!radioChannel || !listenerCountElement) return;
-
-  const presenceState = radioChannel.presenceState();
-  const allListeners = Object.values(presenceState).flat();
-  const count = allListeners.filter((person) => person.listening === true).length;
-
+  const state = radioChannel.presenceState();
+  const people = Object.values(state).flat();
+  const count = people.filter((person) => person.listening === true).length;
   listenerCountElement.textContent = String(count);
 }
 
 async function setListeningStatus(listening) {
   isListening = listening;
-
   if (radioChannel) {
     await radioChannel.track({ listening });
     updateListenerCount();
   }
 }
 
-function startRadioListenerCounter() {
-  if (!window.supabase || !listenerCountElement) return;
-
-  radioChannel = supabaseClient.channel("axy-radio-listeners", {
-    config: {
-      presence: { key: presenceKey }
-    }
+function startListenerCounter() {
+  radioChannel = supabaseClient.channel("axy-youtube-listeners", {
+    config: { presence: { key: presenceKey } }
   });
 
   radioChannel
@@ -346,35 +322,27 @@ function startRadioListenerCounter() {
     });
 }
 
-function loadYouTubePlayerApi() {
-  const script = document.createElement("script");
-  script.src = "https://www.youtube.com/iframe_api";
-  document.head.appendChild(script);
-
-  window.onYouTubeIframeAPIReady = () => {
-    radioPlayer = new YT.Player("ytPlayer", {
-      width: "100%",
-      height: "100%",
-      playerVars: {
-        listType: "playlist",
-        list: RADIO_PLAYLIST_ID,
-        playsinline: 1
-      },
-      events: {
-        onStateChange(event) {
-          // Count only visitors whose YouTube player is actively playing.
-          setListeningStatus(event.data === YT.PlayerState.PLAYING);
-        }
+window.onYouTubeIframeAPIReady = function () {
+  radioPlayer = new YT.Player("ytPlayer", {
+    width: "100%",
+    height: "100%",
+    playerVars: {
+      listType: "playlist",
+      list: RADIO_PLAYLIST_ID,
+      playsinline: 1
+    },
+    events: {
+      onStateChange(event) {
+        setListeningStatus(event.data === YT.PlayerState.PLAYING);
       }
-    });
-  };
-}
-
-startRadioListenerCounter();
-loadYouTubePlayerApi();
+    }
+  });
+};
 
 window.addEventListener("beforeunload", () => {
-  if (radioChannel) {
-    radioChannel.untrack();
-  }
+  if (radioChannel) radioChannel.untrack();
 });
+
+startListenerCounter();
+loadPublicUpdates();
+checkExistingSession();
