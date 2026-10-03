@@ -3,10 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta
-    name="description"
-    content="AXY OFFICIAL shares guides about Telegram task bots, app offers, loot deals, and free items."
-  >
+  <meta name="description" content="AXY OFFICIAL shares guides about Telegram task bots, app offers, loot deals, and free items.">
   <title>AXY OFFICIAL | Tasks, Deals & Freebies</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -29,9 +26,9 @@
       </button>
 
       <div class="nav-links" id="navLinks">
+        <a href="#radio">Radio</a>
         <a href="#guides">Guides</a>
         <a href="#updates">Updates</a>
-        <a href="#how-it-works">How it works</a>
         <a href="#disclaimer">Disclaimer</a>
         <a href="#contact">Contact</a>
         <a href="#admin">Admin</a>
@@ -40,32 +37,32 @@
   </header>
 
   <main>
-<section class="radio-section" id="radio">
-  <div class="container radio-card">
-    <div class="radio-heading">
-      <div>
-        <p class="eyebrow">AXY OFFICIAL RADIO</p>
-        <h2>90s songs & more</h2>
+    <section class="radio-section" id="radio">
+      <div class="container radio-card">
+        <div class="radio-heading">
+          <div>
+            <p class="eyebrow">AXY OFFICIAL RADIO</p>
+            <h2>90s songs & more</h2>
+          </div>
+          <p class="listener-pill">
+            <span class="live-dot"></span>
+            <span id="listenerCount">0</span> listening now
+          </p>
+        </div>
+
+        <p class="now-playing">
+          Now playing: <strong id="nowPlaying">Choose a song</strong>
+        </p>
+
+        <audio id="radioAudio" controls preload="none">
+          Your browser does not support MP3 audio.
+        </audio>
+
+        <div class="track-list" id="trackList"></div>
+        <p class="radio-note">Press play to listen.</p>
       </div>
+    </section>
 
-      <p class="listener-pill">
-        <span class="live-dot"></span>
-        <span id="listenerCount">0</span> listening now
-      </p>
-    </div>
-
-    <p class="now-playing">
-      Now playing: <strong id="nowPlaying">Choose a song</strong>
-    </p>
-
-    <audio id="radioAudio" controls preload="none">
-      Your browser does not support MP3 audio.
-    </audio>
-
-    <div class="track-list" id="trackList"></div>
-    <p class="radio-note">Press play to listen.</p>
-  </div>
-</section>
     <section class="hero" id="home">
       <div class="container hero-content">
         <p class="eyebrow">Tasks · Deals · Freebie guides</p>
@@ -75,20 +72,11 @@
           loot deals, and free items from platforms such as Swiggy, Zomato,
           and Blinkit.
         </p>
-
         <div class="hero-actions">
           <a class="button button-primary" href="#guides">Explore the guides</a>
-          <a
-            class="button button-start"
-            href="https://t.me/+XpjEYnfmj3g2ZTU1"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Start Earning</a>
+          <a class="button button-start" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener noreferrer">Start Earning</a>
         </div>
-
-        <p class="hero-note">
-          Offers can change. Check official app terms. Earnings are not guaranteed.
-        </p>
+        <p class="hero-note">Offers can change. Check official app terms. Earnings are not guaranteed.</p>
       </div>
     </section>
 
@@ -97,10 +85,7 @@
         <div class="section-heading">
           <p class="eyebrow">Browse topics</p>
           <h2>Deals, tasks, and freebies</h2>
-          <p>
-            Educational guides about task-based rewards and app offers.
-            Availability can vary by account, location, and date.
-          </p>
+          <p>Educational guides about task-based rewards and app offers. Availability can vary by account, location, and date.</p>
         </div>
 
         <div class="card-grid">
@@ -108,39 +93,24 @@
             <div class="card-icon" aria-hidden="true">➤</div>
             <p class="category">Telegram</p>
             <h3>Task bot guides</h3>
-            <p>
-              Learn what to check before using a task bot and how to spot
-              suspicious requests.
-            </p>
-            <a class="text-link" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener noreferrer">
-              Visit Telegram →
-            </a>
+            <p>Learn what to check before using a task bot and how to spot suspicious requests.</p>
+            <a class="text-link" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener noreferrer">Visit Telegram →</a>
           </article>
 
           <article class="info-card">
             <div class="card-icon" aria-hidden="true">%</div>
             <p class="category">Food offers</p>
             <h3>Swiggy and Zomato deals</h3>
-            <p>
-              Check offer dates, minimum order amounts, eligible locations,
-              and terms in the official app.
-            </p>
-            <a class="text-link" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener noreferrer">
-              Visit Telegram →
-            </a>
+            <p>Check offer dates, minimum order amounts, eligible locations, and terms in the official app.</p>
+            <a class="text-link" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener noreferrer">Visit Telegram →</a>
           </article>
 
           <article class="info-card">
             <div class="card-icon" aria-hidden="true">＋</div>
             <p class="category">Grocery offers</p>
             <h3>Blinkit deals and free items</h3>
-            <p>
-              Review deal terms, item availability, and delivery areas before
-              placing an order.
-            </p>
-            <a class="text-link" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener noreferrer">
-              Visit Telegram →
-            </a>
+            <p>Review deal terms, item availability, and delivery areas before placing an order.</p>
+            <a class="text-link" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener noreferrer">Visit Telegram →</a>
           </article>
         </div>
       </div>
@@ -159,32 +129,6 @@
       </div>
     </section>
 
-    <section class="section how-section" id="how-it-works">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Before you participate</p>
-          <h2>Check first. Decide for yourself.</h2>
-        </div>
-        <div class="card-grid">
-          <article class="info-card">
-            <p class="step-number">01</p>
-            <h3>Read the offer</h3>
-            <p>Check official app terms, expiry dates, eligibility, and location limits.</p>
-          </article>
-          <article class="info-card">
-            <p class="step-number">02</p>
-            <h3>Check the source</h3>
-            <p>Verify apps, bots, and links. Be careful with guaranteed income claims.</p>
-          </article>
-          <article class="info-card">
-            <p class="step-number">03</p>
-            <h3>Protect your details</h3>
-            <p>Never share passwords, OTPs, or payment details with unverified sources.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="section about-section" id="about">
       <div class="container about-grid">
         <div class="about-visual">
@@ -194,7 +138,6 @@
             <span>Check terms before taking part.</span>
           </div>
         </div>
-
         <div>
           <p class="eyebrow">About AXY OFFICIAL</p>
           <h2>Guides to help you understand offers.</h2>
@@ -250,27 +193,15 @@
           <h2>Follow AXY OFFICIAL</h2>
           <p>Visit our Telegram or Instagram for updates, or email us with questions.</p>
           <div class="social-links">
-            <a href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener noreferrer">
-              Telegram channel ↗
-            </a>
-            <a
-              href="https://www.instagram.com/officialaxy?stkn=MWs2Zjhocm0wZXQ3ZQ=="
-              target="_blank"
-              rel="noopener noreferrer"
-            >Instagram ↗</a>
+            <a href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener noreferrer">Telegram channel ↗</a>
+            <a href="https://www.instagram.com/officialaxy?stkn=MWs2Zjhocm0wZXQ3ZQ==" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
             <a href="mailto:axymanager@gmail.com">axymanager@gmail.com ↗</a>
           </div>
         </div>
-
         <aside class="info-card">
           <h3>Have a question?</h3>
-          <p>
-            Email us about a guide or topic. Do not send passwords, OTPs,
-            or sensitive account or payment information.
-          </p>
-          <a class="button button-primary" href="mailto:axymanager@gmail.com">
-            Email AXY OFFICIAL
-          </a>
+          <p>Email us about a guide or topic. Do not send passwords, OTPs, or sensitive account or payment information.</p>
+          <a class="button button-primary" href="mailto:axymanager@gmail.com">Email AXY OFFICIAL</a>
         </aside>
       </div>
     </section>
@@ -282,12 +213,10 @@
         <p class="admin-intro">Sign in to publish or remove website updates.</p>
 
         <form id="loginForm" class="admin-form">
-          <label>
-            Username
+          <label>Username
             <input id="adminUsername" type="text" autocomplete="username" required>
           </label>
-          <label>
-            Password
+          <label>Password
             <input id="adminPassword" type="password" autocomplete="current-password" required>
           </label>
           <button class="button button-primary" type="submit">Log in</button>
@@ -297,32 +226,23 @@
         <div id="publisher" hidden>
           <h3 class="admin-subheading">Publish an update</h3>
           <form id="updateForm" class="admin-form">
-            <label>
-              Update title
+            <label>Update title
               <input id="updateTitle" type="text" maxlength="100" required>
             </label>
 
-            <label>
-              Update details
+            <label>Update details
               <textarea id="updateBody" rows="5" maxlength="3000" required></textarea>
             </label>
 
-            <label>
-              Image (optional, max 5 MB)
-              <input
-                id="updateImage"
-                type="file"
-                accept="image/png,image/jpeg,image/webp,image/gif"
-              >
+            <label>Image (optional, max 5 MB)
+              <input id="updateImage" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
             </label>
 
-            <label>
-              Button text (optional)
+            <label>Button text (optional)
               <input id="updateButtonText" type="text" maxlength="40" placeholder="Open offer">
             </label>
 
-            <label>
-              Button link (optional)
+            <label>Button link (optional)
               <input id="updateButtonUrl" type="url" placeholder="https://example.com/offer">
             </label>
 
