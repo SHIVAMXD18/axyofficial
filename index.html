@@ -7,6 +7,7 @@
   <title>AXY OFFICIAL | Tasks, Deals & Freebies</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -26,7 +27,7 @@
       </button>
 
       <div class="nav-links" id="navLinks">
-        <a href="#radio">Radio</a>
+        <a href="#radio">Music</a>
         <a href="#guides">Guides</a>
         <a href="#updates">Updates</a>
         <a href="#disclaimer">Disclaimer</a>
@@ -41,7 +42,7 @@
       <div class="container radio-card">
         <div class="radio-heading">
           <div>
-            <p class="eyebrow">AXY OFFICIAL RADIO</p>
+            <p class="eyebrow">AXY OFFICIAL MUSIC</p>
             <h2>90s songs & more</h2>
           </div>
           <p class="listener-pill">
@@ -50,16 +51,12 @@
           </p>
         </div>
 
-        <p class="now-playing">
-          Now playing: <strong id="nowPlaying">Choose a song</strong>
+        <div id="ytPlayer" class="youtube-player">
+          <p>Loading YouTube playlist…</p>
+        </div>
+        <p class="radio-note">
+          Songs play through the YouTube player. Press play to listen.
         </p>
-
-        <audio id="radioAudio" controls preload="none">
-          Your browser does not support MP3 audio.
-        </audio>
-
-        <div class="track-list" id="trackList"></div>
-        <p class="radio-note">Press play to listen.</p>
       </div>
     </section>
 
@@ -74,9 +71,13 @@
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="#guides">Explore the guides</a>
-          <a class="button button-start" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener noreferrer">Start Earning</a>
+          <a class="button button-start" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener noreferrer">
+            Start Earning
+          </a>
         </div>
-        <p class="hero-note">Offers can change. Check official app terms. Earnings are not guaranteed.</p>
+        <p class="hero-note">
+          Offers can change. Check official app terms. Earnings are not guaranteed.
+        </p>
       </div>
     </section>
 
@@ -85,7 +86,10 @@
         <div class="section-heading">
           <p class="eyebrow">Browse topics</p>
           <h2>Deals, tasks, and freebies</h2>
-          <p>Educational guides about task-based rewards and app offers. Availability can vary by account, location, and date.</p>
+          <p>
+            Educational guides about task-based rewards and app offers.
+            Availability can vary by account, location, and date.
+          </p>
         </div>
 
         <div class="card-grid">
@@ -142,9 +146,9 @@
           <p class="eyebrow">About AXY OFFICIAL</p>
           <h2>Guides to help you understand offers.</h2>
           <p>
-            AXY OFFICIAL shares information about Telegram task bots, app
-            offers, loot deals, and free-item promotions. We explain what to
-            check so you can make your own informed decision.
+            AXY OFFICIAL shares information about Telegram task bots, app offers,
+            loot deals, and free-item promotions. We explain what to check so you
+            can make your own informed decision.
           </p>
           <ul class="check-list">
             <li>Guides about tasks and app offers</li>
@@ -162,10 +166,10 @@
           <p class="eyebrow">Please read</p>
           <h2>Disclaimer</h2>
           <p>
-            AXY OFFICIAL content is for educational and informational purposes
-            only. We do not guarantee earnings, rewards, savings, or any
-            particular result. Offers and task bots are provided by third
-            parties and may change, expire, or have conditions.
+            AXY OFFICIAL content is for educational and informational purposes only.
+            We do not guarantee earnings, rewards, savings, or any particular result.
+            Offers and task bots are provided by third parties and may change, expire,
+            or have conditions.
           </p>
           <p>
             Check details through the relevant official app or service before
@@ -174,13 +178,12 @@
           </p>
           <p>
             AXY OFFICIAL is not responsible for fraud, scams, losses, or damage
-            arising from third-party apps, bots, links, tasks, or offers. Use
-            them at your own discretion and risk.
+            arising from third-party apps, bots, links, tasks, or offers. Use them
+            at your own discretion and risk.
           </p>
           <p>
-            Investment-related apps or offers are for information only and are
-            not financial advice. Invest at your own risk and research
-            independently before making investment decisions.
+            Investment-related apps or offers are for information only and are not
+            financial advice. Invest at your own risk and research independently.
           </p>
         </div>
       </div>
@@ -200,7 +203,7 @@
         </div>
         <aside class="info-card">
           <h3>Have a question?</h3>
-          <p>Email us about a guide or topic. Do not send passwords, OTPs, or sensitive account or payment information.</p>
+          <p>Do not email passwords, OTPs, or sensitive account or payment information.</p>
           <a class="button button-primary" href="mailto:axymanager@gmail.com">Email AXY OFFICIAL</a>
         </aside>
       </div>
@@ -229,23 +232,18 @@
             <label>Update title
               <input id="updateTitle" type="text" maxlength="100" required>
             </label>
-
             <label>Update details
               <textarea id="updateBody" rows="5" maxlength="3000" required></textarea>
             </label>
-
             <label>Image (optional, max 5 MB)
               <input id="updateImage" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
             </label>
-
             <label>Button text (optional)
               <input id="updateButtonText" type="text" maxlength="40" placeholder="Open offer">
             </label>
-
             <label>Button link (optional)
               <input id="updateButtonUrl" type="url" placeholder="https://example.com/offer">
             </label>
-
             <div class="admin-buttons">
               <button class="button button-primary" type="submit">Publish update</button>
               <button class="button button-quiet" id="logoutButton" type="button">Log out</button>
