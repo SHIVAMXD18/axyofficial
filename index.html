@@ -40,7 +40,7 @@
   </header>
 
   <main>
-    <section class="radio-section" id="radio">
+<section class="radio-section" id="radio">
   <div class="container radio-card">
     <div class="radio-heading">
       <div>
@@ -54,10 +54,16 @@
       </p>
     </div>
 
-    <div id="ytPlayer"></div>
-    <p class="radio-note">
-      Press play to listen. Songs are played through YouTube.
+    <p class="now-playing">
+      Now playing: <strong id="nowPlaying">Choose a song</strong>
     </p>
+
+    <audio id="radioAudio" controls preload="none">
+      Your browser does not support MP3 audio.
+    </audio>
+
+    <div class="track-list" id="trackList"></div>
+    <p class="radio-note">Press play to listen.</p>
   </div>
 </section>
     <section class="hero" id="home">
