@@ -1,7 +1,7 @@
 const SUPABASE_URL = "https://vofdgimzcaynqywwzjln.supabase.co";
 const SUPABASE_KEY = "sb_publishable_00_bnNvpyha0KQFikUgEvg_PLZcUrnb";
 const ADMIN_USERNAME = "AKSHAY18";
-const ADMIN_LOGIN_EMAIL = "axymanager@gmail.com";
+const ADMIN_LOGIN_EMAIL = "shivampatelipa@gmail.com";
 
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
