@@ -7,7 +7,7 @@
     name="description"
     content="AXY OFFICIAL shares guides about Telegram task bots, app offers, loot deals, and free items."
   >
-  <title>AXY OFFICIAL- | Tasks, Deals & Freebies</title>
+  <title>AXY OFFICIAL | Tasks, Deals & Freebies</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="script.js" defer></script>
@@ -61,7 +61,7 @@
         </div>
 
         <p class="hero-note">
-          Offers can change. Check the official app for terms. Earnings are not guaranteed.
+          Offers can change. Check official app terms. Earnings are not guaranteed.
         </p>
       </div>
     </section>
@@ -127,7 +127,6 @@
           <h2>Updates & new offers</h2>
           <p>Check offer terms in the official app before participating.</p>
         </div>
-
         <div class="updates-list" id="updatesList" aria-live="polite">
           <p>Loading updates…</p>
         </div>
@@ -140,7 +139,6 @@
           <p class="eyebrow">Before you participate</p>
           <h2>Check first. Decide for yourself.</h2>
         </div>
-
         <div class="card-grid">
           <article class="info-card">
             <p class="step-number">01</p>
@@ -225,7 +223,6 @@
           <p class="eyebrow">Stay connected</p>
           <h2>Follow AXY OFFICIAL</h2>
           <p>Visit our Telegram or Instagram for updates, or email us with questions.</p>
-
           <div class="social-links">
             <a href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener noreferrer">
               Telegram channel ↗
@@ -234,9 +231,7 @@
               href="https://www.instagram.com/officialaxy?stkn=MWs2Zjhocm0wZXQ3ZQ=="
               target="_blank"
               rel="noopener noreferrer"
-            >
-              Instagram ↗
-            </a>
+            >Instagram ↗</a>
             <a href="mailto:axymanager@gmail.com">axymanager@gmail.com ↗</a>
           </div>
         </div>
@@ -280,10 +275,31 @@
               Update title
               <input id="updateTitle" type="text" maxlength="100" required>
             </label>
+
             <label>
               Update details
               <textarea id="updateBody" rows="5" maxlength="3000" required></textarea>
             </label>
+
+            <label>
+              Image (optional, max 5 MB)
+              <input
+                id="updateImage"
+                type="file"
+                accept="image/png,image/jpeg,image/webp,image/gif"
+              >
+            </label>
+
+            <label>
+              Button text (optional)
+              <input id="updateButtonText" type="text" maxlength="40" placeholder="Open offer">
+            </label>
+
+            <label>
+              Button link (optional)
+              <input id="updateButtonUrl" type="url" placeholder="https://example.com/offer">
+            </label>
+
             <div class="admin-buttons">
               <button class="button button-primary" type="submit">Publish update</button>
               <button class="button button-quiet" id="logoutButton" type="button">Log out</button>
