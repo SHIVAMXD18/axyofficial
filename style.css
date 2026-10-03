@@ -34,7 +34,7 @@ button, input, textarea { font: inherit; }
 .container { width: min(1120px, 90%); margin-inline: auto; }
 .section { padding: 78px 0; }
 
-/* Header and navigation */
+/* Header */
 .site-header {
   position: absolute;
   z-index: 5;
@@ -58,8 +58,7 @@ button, input, textarea { font: inherit; }
 }
 
 .brand span { color: var(--lime); }
-
-.nav-links { display: flex; gap: 22px; align-items: center; }
+.nav-links { display: flex; gap: 20px; align-items: center; }
 .nav-links a { font-size: .9rem; font-weight: 700; }
 .nav-links a:hover { color: var(--lime); }
 
@@ -102,14 +101,12 @@ button, input, textarea { font: inherit; }
   text-transform: uppercase;
 }
 .hero .eyebrow { color: var(--lime); }
-
 .hero h1 {
   margin: 8px 0 17px;
   font-size: clamp(3rem, 8vw, 6rem);
   line-height: .98;
   letter-spacing: -.05em;
 }
-
 .hero-description { max-width: 620px; color: #eef3ef; font-size: 1.08rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
 .hero-note { color: #e2ebe3; font-size: .88rem; }
@@ -135,8 +132,11 @@ button, input, textarea { font: inherit; }
 
 /* Headings and cards */
 .section-heading { max-width: 680px; margin-bottom: 28px; }
-.section-heading h2, .about-grid h2, .disclaimer-box h2,
-.contact-panel h2, .admin-card h2 {
+.section-heading h2,
+.about-grid h2,
+.disclaimer-box h2,
+.contact-panel h2,
+.admin-card h2 {
   margin: 4px 0 11px;
   font-size: clamp(2rem, 5vw, 3rem);
   line-height: 1.1;
@@ -191,6 +191,23 @@ button, input, textarea { font: inherit; }
 .update-card h3 { margin: 0 0 6px; }
 .update-card p { margin: 0; color: var(--muted); overflow-wrap: anywhere; }
 .update-date { display: block; margin-top: 10px; color: var(--green); font-size: .85rem; }
+.update-image {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  margin: 14px 0;
+  border-radius: 14px;
+  object-fit: cover;
+}
+.update-cta {
+  display: inline-flex;
+  margin-top: 14px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  color: var(--ink);
+  background: var(--lime);
+  font-weight: 800;
+}
 .delete-update { margin-top: 12px; }
 .step-number { color: var(--green); font-weight: 900; }
 
@@ -202,7 +219,6 @@ button, input, textarea { font: inherit; }
   align-items: center;
   gap: 48px;
 }
-
 .about-visual {
   min-height: 360px;
   display: grid;
@@ -214,7 +230,6 @@ button, input, textarea { font: inherit; }
     url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85")
     center / cover;
 }
-
 .visual-card {
   width: 100%;
   min-height: 300px;
@@ -227,10 +242,8 @@ button, input, textarea { font: inherit; }
   color: white;
   background: #0c281e44;
 }
-
 .visual-label { color: var(--lime); font-weight: 900; letter-spacing: .12em; }
 .visual-title { font-size: clamp(2rem, 5vw, 3.3rem); font-weight: 900; line-height: 1.05; }
-
 .check-list { padding-left: 20px; }
 .check-list li { margin: 8px 0; }
 
@@ -244,7 +257,6 @@ button, input, textarea { font: inherit; }
   border-radius: var(--radius);
   background: var(--warning-bg);
 }
-
 .warning-icon {
   display: grid;
   width: 48px;
@@ -255,7 +267,6 @@ button, input, textarea { font: inherit; }
   font-size: 1.5rem;
   font-weight: 900;
 }
-
 .disclaimer-box p:not(.eyebrow) { color: #584e36; }
 
 /* Contact */
@@ -269,7 +280,6 @@ button, input, textarea { font: inherit; }
   border-radius: 24px;
   background: #e9efe5;
 }
-
 .social-links { display: grid; gap: 10px; margin-top: 20px; }
 .social-links a {
   padding: 12px 14px;
@@ -281,14 +291,12 @@ button, input, textarea { font: inherit; }
 }
 .social-links a:hover { background: var(--lime); }
 
-/* Admin panel */
+/* Admin */
 .admin-section { background: var(--soft-green); }
 .admin-card { max-width: 760px; margin: auto; }
 .admin-intro { color: var(--muted); }
-
 .admin-form { display: grid; gap: 13px; margin-top: 18px; }
 .admin-form label { display: grid; gap: 6px; font-weight: 700; }
-
 .admin-form input, .admin-form textarea {
   width: 100%;
   padding: 12px;
@@ -296,7 +304,6 @@ button, input, textarea { font: inherit; }
   border-radius: 10px;
   background: white;
 }
-
 .admin-form textarea { resize: vertical; }
 .admin-buttons { display: flex; flex-wrap: wrap; gap: 10px; }
 .form-message { min-height: 1.4em; margin: 0; color: var(--green); }
@@ -319,7 +326,6 @@ button, input, textarea { font: inherit; }
   .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .about-grid, .contact-panel { grid-template-columns: 1fr; }
 }
-
 @media (max-width: 620px) {
   .section { padding: 60px 0; }
   .menu-button { display: block; }
@@ -341,7 +347,6 @@ button, input, textarea { font: inherit; }
   .about-visual { min-height: 300px; }
   .visual-card { min-height: 250px; }
 }
-
 @media (max-width: 460px) {
   .card-grid { grid-template-columns: 1fr; }
   .disclaimer-box { grid-template-columns: 1fr; padding: 21px; }
