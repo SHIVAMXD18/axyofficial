@@ -3,16 +3,19 @@ const SUPABASE_KEY = "sb_publishable_00_bnNvpyha0KQFikUgEvg_PLZcUrnb";
 
 const ADMIN_USERNAME = "AKSHAY18";
 const ADMIN_LOGIN_EMAIL = "axymanager@gmail.com";
-const RADIO_PLAYLIST_ID = "PLgObA3pAqvOh87Z03QG8Z4xE-uqlAWSBy";
 
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
 const $ = (selector) => document.querySelector(selector);
-
 const page = document.body.dataset.page;
 
-$("#year") && ($("#year").textContent = new Date().getFullYear());
+if ($("#year")) {
+  $("#year").textContent = new Date().getFullYear();
+}
 
-/* Shared safe helpers */
 function escapeHtml(value) {
   return String(value ?? "").replace(/[&<>"']/g, (character) => ({
     "&": "&amp;",
@@ -26,7 +29,9 @@ function escapeHtml(value) {
 function safeWebUrl(value) {
   try {
     const url = new URL(value);
-    return url.protocol === "https:" || url.protocol === "http:" ? url.href : null;
+    return url.protocol === "https:" || url.protocol === "http:"
+      ? url.href
+      : null;
   } catch {
     return null;
   }
@@ -61,7 +66,7 @@ function updateCardHtml(update, showDelete = false) {
   `;
 }
 
-/* Public updates */
+/* Public homepage */
 async function loadPublicUpdates() {
   const list = $("#updatesList");
   if (!list) return;
@@ -84,15 +89,14 @@ async function loadPublicUpdates() {
   list.innerHTML = data.map((item) => updateCardHtml(item)).join("");
 }
 
-/* Menu on the home page */
 if (page === "home") {
   const menuButton = $("#menuButton");
   const navLinks = $("#navLinks");
 
   if (menuButton && navLinks) {
     menuButton.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      menuButton.setAttribute("aria-expanded", String(isOpen));
+      const open = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(open));
     });
 
     navLinks.addEventListener("click", (event) => {
@@ -104,15 +108,10 @@ if (page === "home") {
   }
 
   loadPublicUpdates();
-  startRadio();
 }
 
-/* Admin page */
+/* Separate admin page */
 if (page === "admin") {
-  setupAdminPage();
-}
-
-function setupAdminPage() {
   const loginForm = $("#loginForm");
   const loginMessage = $("#loginMessage");
   const publisher = $("#publisher");
@@ -137,13 +136,18 @@ function setupAdminPage() {
       return;
     }
 
-    adminUpdatesList.innerHTML = data.map((item) => updateCardHtml(item, true)).join("");
+    adminUpdatesList.innerHTML = data
+      .map((item) => updateCardHtml(item, true))
+      .join("");
   }
 
   async function setAdminView(isLoggedIn) {
     loginForm.hidden = isLoggedIn;
     publisher.hidden = !isLoggedIn;
-    if (isLoggedIn) await loadAdminUpdates();
+
+    if (isLoggedIn) {
+      await loadAdminUpdates();
+    }
   }
 
   supabaseClient.auth.getSession().then(({ data }) => {
@@ -168,14 +172,15 @@ function setupAdminPage() {
     });
 
     if (error) {
-      loginMessage.textContent = "Login failed. Check the Supabase Auth email and password.";
+      loginMessage.textContent =
+        "Login failed. Check the Supabase Auth email and password.";
       return;
     }
 
     loginForm.reset();
     loginMessage.textContent = "";
     await setAdminView(Boolean(data.session));
-    $("#publisher").scrollIntoView({ behavior: "smooth", block: "start" });
+    publisher.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
   updateForm.addEventListener("submit", async (event) => {
@@ -192,8 +197,10 @@ function setupAdminPage() {
 
     if (buttonText || rawButtonUrl) {
       buttonUrl = safeWebUrl(rawButtonUrl);
+
       if (!buttonText || !buttonUrl) {
-        publishMessage.textContent = "For a button, enter both its text and a valid http/https link.";
+        publishMessage.textContent =
+          "For a button, enter both its text and a valid http/https link.";
         return;
       }
     }
@@ -201,7 +208,12 @@ function setupAdminPage() {
     let imageUrl = null;
 
     if (imageFile) {
-      const allowedTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+      const allowedTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/webp",
+        "image/gif"
+      ];
 
       if (!allowedTypes.includes(imageFile.type)) {
         publishMessage.textContent = "Choose a JPG, PNG, WEBP, or GIF image.";
@@ -251,7 +263,8 @@ function setupAdminPage() {
 
     if (error) {
       console.error("Publish error:", error);
-      publishMessage.textContent = "Publish failed. Check admin UID and Supabase policies.";
+      publishMessage.textContent =
+        "Publish failed. Check admin UID and Supabase policies.";
       return;
     }
 
@@ -285,82 +298,3 @@ function setupAdminPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
-
-/* YouTube playlist and current listener presence */
-let radioPlayer;
-let radioChannel;
-let isListening = false;
-let radioPresenceKey = `axy-${Date.now()}-${Math.random().toString(36).slice(2)}`;
-
-function updateListenerCount() {
-  const countElement = $("#listenerCount");
-  if (!radioChannel || !countElement) return;
-
-  const state = radioChannel.presenceState();
-  const people = Object.values(state).flat();
-  countElement.textContent = String(
-    people.filter((person) => person.listening === true).length
-  );
-}
-
-async function setListeningStatus(listening) {
-  isListening = listening;
-
-  if (radioChannel) {
-    await radioChannel.track({ listening });
-    updateListenerCount();
-  }
-}
-
-function startRadioPresence() {
-  radioChannel = supabaseClient.channel("axy-radio-listeners", {
-    config: { presence: { key: radioPresenceKey } }
-  });
-
-  radioChannel
-    .on("presence", { event: "sync" }, updateListenerCount)
-    .subscribe(async (status) => {
-      if (status === "SUBSCRIBED") {
-        await radioChannel.track({ listening: isListening });
-        updateListenerCount();
-      }
-    });
-}
-
-let radioInitialized = false;
-
-function createRadioPlayer() {
-  if (radioInitialized || !window.YT || !window.YT.Player || !$("#ytPlayer")) return;
-  radioInitialized = true;
-
-  radioPlayer = new YT.Player("ytPlayer", {
-    width: "100%",
-    height: "100%",
-    playerVars: {
-      listType: "playlist",
-      list: RADIO_PLAYLIST_ID,
-      controls: 1,
-      playsinline: 1
-    },
-    events: {
-      onStateChange(event) {
-        setListeningStatus(event.data === YT.PlayerState.PLAYING);
-      }
-    }
-  });
-}
-
-function startRadio() {
-  startRadioPresence();
-
-  window.onYouTubeIframeAPIReady = createRadioPlayer;
-
-  // Fallback in case the YouTube API loaded before this file's callback.
-  if (window.YT && window.YT.Player) {
-    createRadioPlayer();
-  }
-}
-
-window.addEventListener("beforeunload", () => {
-  if (radioChannel) radioChannel.untrack();
-});
