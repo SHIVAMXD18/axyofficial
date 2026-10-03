@@ -235,12 +235,11 @@ updateForm.addEventListener("submit", async (event) => {
         contentType: imageFile.type
       });
 
-    if (uploadError) {
-      publishMessage.textContent =
-        "Image upload nahi hui. Storage bucket/admin permissions check karo.";
-      return;
-    }
-
+if (uploadError) {
+  console.error("Supabase image upload error:", uploadError);
+  publishMessage.textContent = `Image upload error: ${uploadError.message}`;
+  return;
+}
     const { data: imageData } = supabaseClient
       .storage
       .from("updates-images")
