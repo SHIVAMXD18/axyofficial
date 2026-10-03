@@ -15,3 +15,8 @@ $(function () {
     }
   }
   $('.toggle-input')[0].checked = true;
+  const checkbox = document.querySelector('.toggle-input');
+  checkbox.addEventListener('change', () => {
+    document.body.classList.toggle('dmode');
+  });
+});
