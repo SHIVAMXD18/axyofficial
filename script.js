@@ -1,7 +1,8 @@
 const SUPABASE_URL = "https://vofdgimzcaynqywwzjln.supabase.co";
 const SUPABASE_KEY = "sb_publishable_00_bnNvpyha0KQFikUgEvg_PLZcUrnb";
+
 const ADMIN_USERNAME = "AKSHAY18";
-const ADMIN_LOGIN_EMAIL = "shivampatelipa@gmail.com";
+const ADMIN_LOGIN_EMAIL = "axymanager@gmail.com";
 
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
@@ -20,6 +21,7 @@ const publishMessage = $("#publishMessage");
 const updatesList = $("#updatesList");
 const adminUpdatesList = $("#adminUpdatesList");
 const logoutButton = $("#logoutButton");
+const updateImageInput = $("#updateImage");
 
 $("#year").textContent = new Date().getFullYear();
 
@@ -38,7 +40,7 @@ if (menuButton && navLinks) {
 }
 
 function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g, (character) => ({
+  return String(value ?? "").replace(/[&<>"']/g, (character) => ({
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
@@ -47,20 +49,42 @@ function escapeHtml(value) {
   })[character]);
 }
 
+function safeWebUrl(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" || url.protocol === "http:"
+      ? url.href
+      : null;
+  } catch {
+    return null;
+  }
+}
+
 function updateCardHtml(update, showDelete = false) {
-  const deleteButton = showDelete
-    ? `<button class="button button-quiet delete-update"
-         data-id="${escapeHtml(update.id)}" type="button">Delete</button>`
+  const imageUrl = update.image_url ? safeWebUrl(update.image_url) : null;
+  const imageHtml = imageUrl
+    ? `<img class="update-image" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(update.title)}">`
+    : "";
+
+  const buttonUrl = update.button_url ? safeWebUrl(update.button_url) : null;
+  const ctaHtml = buttonUrl && update.button_text
+    ? `<a class="update-cta" href="${escapeHtml(buttonUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(update.button_text)}</a>`
+    : "";
+
+  const deleteHtml = showDelete
+    ? `<button class="button button-quiet delete-update" data-id="${escapeHtml(update.id)}" type="button">Delete</button>`
     : "";
 
   return `
     <article class="update-card">
       <h3>${escapeHtml(update.title)}</h3>
+      ${imageHtml}
       <p>${escapeHtml(update.body).replace(/\n/g, "<br>")}</p>
       <time class="update-date" datetime="${escapeHtml(update.created_at)}">
         ${escapeHtml(new Date(update.created_at).toLocaleString())}
       </time>
-      ${deleteButton}
+      ${ctaHtml}
+      ${deleteHtml}
     </article>
   `;
 }
@@ -68,7 +92,7 @@ function updateCardHtml(update, showDelete = false) {
 async function loadPublicUpdates() {
   const { data, error } = await supabaseClient
     .from("updates")
-    .select("id, title, body, created_at")
+    .select("id, title, body, image_url, button_text, button_url, created_at")
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -87,7 +111,7 @@ async function loadPublicUpdates() {
 async function loadAdminUpdates() {
   const { data, error } = await supabaseClient
     .from("updates")
-    .select("id, title, body, created_at")
+    .select("id, title, body, image_url, button_text, button_url, created_at")
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -146,7 +170,6 @@ loginForm.addEventListener("submit", async (event) => {
   loginMessage.textContent = "";
   await setAdminView(Boolean(data.session));
 
-  // Login ke baad Admin Panel aur update form screen par lao.
   $("#admin").scrollIntoView({ behavior: "smooth", block: "start" });
 
   setTimeout(() => {
@@ -164,14 +187,81 @@ updateForm.addEventListener("submit", async (event) => {
 
   const title = $("#updateTitle").value.trim();
   const body = $("#updateBody").value.trim();
+  const buttonText = $("#updateButtonText").value.trim();
+  const rawButtonUrl = $("#updateButtonUrl").value.trim();
+  const imageFile = updateImageInput.files[0];
+
+  let buttonUrl = null;
+
+  if (buttonText || rawButtonUrl) {
+    buttonUrl = safeWebUrl(rawButtonUrl);
+
+    if (!buttonText || !buttonUrl) {
+      publishMessage.textContent =
+        "Button ke liye text aur valid http/https link dono bharo.";
+      return;
+    }
+  }
+
+  let imageUrl = null;
+
+  if (imageFile) {
+    const allowedTypes = [
+      "image/jpeg",
+      "image/png",
+      "image/webp",
+      "image/gif"
+    ];
+
+    if (!allowedTypes.includes(imageFile.type)) {
+      publishMessage.textContent = "JPG, PNG, WEBP, ya GIF image choose karo.";
+      return;
+    }
+
+    if (imageFile.size > 5 * 1024 * 1024) {
+      publishMessage.textContent = "Image 5 MB se chhoti honi chahiye.";
+      return;
+    }
+
+    const extension = imageFile.name.split(".").pop().toLowerCase();
+    const filePath = `${Date.now()}-${crypto.randomUUID()}.${extension}`;
+
+    const { error: uploadError } = await supabaseClient
+      .storage
+      .from("updates-images")
+      .upload(filePath, imageFile, {
+        cacheControl: "3600",
+        upsert: false,
+        contentType: imageFile.type
+      });
+
+    if (uploadError) {
+      publishMessage.textContent =
+        "Image upload nahi hui. Storage bucket/admin permissions check karo.";
+      return;
+    }
+
+    const { data: imageData } = supabaseClient
+      .storage
+      .from("updates-images")
+      .getPublicUrl(filePath);
+
+    imageUrl = imageData.publicUrl;
+  }
 
   const { error } = await supabaseClient
     .from("updates")
-    .insert({ title, body });
+    .insert({
+      title,
+      body,
+      image_url: imageUrl,
+      button_text: buttonText || null,
+      button_url: buttonUrl
+    });
 
   if (error) {
     publishMessage.textContent =
-      "Could not publish. Confirm the account UID is in site_admins.";
+      "Publish nahi hua. Admin UID aur Supabase policies check karo.";
     return;
   }
 
@@ -191,7 +281,7 @@ adminUpdatesList.addEventListener("click", async (event) => {
     .eq("id", button.dataset.id);
 
   if (error) {
-    publishMessage.textContent = "Could not delete this update.";
+    publishMessage.textContent = "Update delete nahi hua.";
     return;
   }
 
