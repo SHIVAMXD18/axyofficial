@@ -39,28 +39,41 @@
 
   <main>
 <section class="radio-section" id="radio">
-  <div class="radio-card">
-    <p class="radio-brand">AXY OFFICIAL RADIO</p>
-    <h1>90s Hits</h1>
-    <p class="radio-subtitle">Songs for the long road</p>
+  <div class="container radio-layout">
+    <div class="radio-main">
+      <div class="radio-topline">
+        <span class="radio-live"><i></i> AXY RADIO</span>
+        <span class="listener-pill">
+          <span id="listenerCount">0</span> listening now
+        </span>
+      </div>
 
-    <div id="ytPlayer" class="youtube-player">
-      Loading playlist…
+      <h1 class="radio-title">90s Hits<br><span>for the long road.</span></h1>
+      <p class="radio-description">
+        Classic Hindi favourites and nostalgic songs. Press play and enjoy
+        the playlist while browsing AXY OFFICIAL.
+      </p>
+
+      <div id="ytPlayer" class="youtube-player">
+        <p>Loading YouTube playlist…</p>
+      </div>
+
+      <p class="radio-note">Music streams through YouTube.</p>
     </div>
 
-    <div class="radio-controls">
-      <button id="radioPlayButton" type="button">▶ Play</button>
-      <button id="radioNextButton" type="button">Next ⏭</button>
-    </div>
+    <aside class="radio-side">
+      <p class="eyebrow">ON AXY OFFICIAL</p>
+      <h2>Music, offers<br>& updates.</h2>
+      <p>Listen to the playlist, then explore our latest task and offer guides.</p>
 
-    <p class="listener-pill">
-      <span class="live-dot"></span>
-      <span id="listenerCount">0</span> listening now
-    </p>
-
-    <button id="showSiteButton" class="show-site-button" type="button">
-      Open AXY OFFICIAL website
-    </button>
+      <a class="button button-primary" href="#updates">See latest updates</a>
+      <a
+        class="radio-telegram-link"
+        href="https://t.me/+XpjEYnfmj3g2ZTU1"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Join AXY on Telegram ↗</a>
+    </aside>
   </div>
 </section>
 
