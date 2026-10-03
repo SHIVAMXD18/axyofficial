@@ -298,3 +298,83 @@ logoutButton.addEventListener("click", async () => {
 
 loadPublicUpdates();
 checkExistingSession();
+
+const RADIO_PLAYLIST_ID = "PLgObA3pAqvOh87Z03QG8Z4xE-uqlAWSBy";
+const listenerCountElement = document.querySelector("#listenerCount");
+
+let radioPlayer;
+let radioChannel;
+let isListening = false;
+
+const presenceKey = `axy-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+
+function updateListenerCount() {
+  if (!radioChannel || !listenerCountElement) return;
+
+  const presenceState = radioChannel.presenceState();
+  const allListeners = Object.values(presenceState).flat();
+  const count = allListeners.filter((person) => person.listening === true).length;
+
+  listenerCountElement.textContent = String(count);
+}
+
+async function setListeningStatus(listening) {
+  isListening = listening;
+
+  if (radioChannel) {
+    await radioChannel.track({ listening });
+    updateListenerCount();
+  }
+}
+
+function startRadioListenerCounter() {
+  if (!window.supabase || !listenerCountElement) return;
+
+  radioChannel = supabaseClient.channel("axy-radio-listeners", {
+    config: {
+      presence: { key: presenceKey }
+    }
+  });
+
+  radioChannel
+    .on("presence", { event: "sync" }, updateListenerCount)
+    .subscribe(async (status) => {
+      if (status === "SUBSCRIBED") {
+        await radioChannel.track({ listening: isListening });
+        updateListenerCount();
+      }
+    });
+}
+
+function loadYouTubePlayerApi() {
+  const script = document.createElement("script");
+  script.src = "https://www.youtube.com/iframe_api";
+  document.head.appendChild(script);
+
+  window.onYouTubeIframeAPIReady = () => {
+    radioPlayer = new YT.Player("ytPlayer", {
+      width: "100%",
+      height: "100%",
+      playerVars: {
+        listType: "playlist",
+        list: RADIO_PLAYLIST_ID,
+        playsinline: 1
+      },
+      events: {
+        onStateChange(event) {
+          // Count only visitors whose YouTube player is actively playing.
+          setListeningStatus(event.data === YT.PlayerState.PLAYING);
+        }
+      }
+    });
+  };
+}
+
+startRadioListenerCounter();
+loadYouTubePlayerApi();
+
+window.addEventListener("beforeunload", () => {
+  if (radioChannel) {
+    radioChannel.untrack();
+  }
+});
