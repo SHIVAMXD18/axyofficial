@@ -1,93 +1,279 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="Explore amazing destinations and plan your next adventure with AXY OFFICIAL."
+  >
+  <title>AXY OFFICIAL | Travel your way</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                                        <!-- Favicon Image link -->
-  <link rel="icon" type="image/x-icon" href="https://cdn.phototourl.com/member/2026-10-03-e91c54f4-fce9-4261-b92c-58a46e5a6e38.jpg">
-  <title>Axy Earning</title>  <!-- Page Title -->
+  <script src="script.js" defer></script>
 </head>
-
 <body>
-  <div class="wrapper">
-    <div class="toggle">
-      <input class="toggle-input" type="checkbox" />
-      <div class="toggle-bg"></div>
-      <div class="toggle-switch">
-        <div class="toggle-switch-figure"></div>
-        <div class="toggle-switch-figureAlt"></div>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="#home">AXY <span>OFFICIAL</span></a>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        type="button"
+        aria-expanded="false"
+        aria-controls="navLinks"
+        aria-label="Open navigation menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#destinations">Destinations</a>
+        <a href="#about">About</a>
+        <a href="#packages">Packages</a>
+        <a href="#contact">Contact</a>
       </div>
-    </div>
-  </div>
-  <section class="main">
-    <div class="container">
-      <div class="top">
-        <div class="k-wrap">
-          <div class="menu">
-            <div class="a"></div>
-            <div class="b"></div>
-            <div class="c"></div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <p class="eyebrow">Find your next adventure</p>
+        <h1>Go where<br>you feel alive.</h1>
+        <p class="hero-description">
+          Discover beautiful places, plan memorable trips, and make every
+          journey your own with AXY OFFICIAL.
+        </p>
+        <a class="button button-primary" href="#packages">Explore our trips</a>
+      </div>
+    </section>
+
+    <section class="section" id="destinations">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">A few places to begin</p>
+          <h2>Popular destinations</h2>
+          <p>
+            From mountain mornings to warm days by the sea, find a trip that
+            feels right for you.
+          </p>
+        </div>
+
+        <div class="destination-grid">
+          <article class="destination-card">
+            <img
+              src="https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1000&q=85"
+              alt="Mountain landscape in Kashmir"
+            >
+            <div class="destination-info">
+              <h3>Kashmir</h3>
+              <p>5 days · India</p>
+            </div>
+          </article>
+
+          <article class="destination-card">
+            <img
+              src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?auto=format&fit=crop&w=1000&q=85"
+              alt="Tropical beach and turquoise water"
+            >
+            <div class="destination-info">
+              <h3>Andaman</h3>
+              <p>5 days · India</p>
+            </div>
+          </article>
+
+          <article class="destination-card">
+            <img
+              src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1000&q=85"
+              alt="Green Kerala backwaters"
+            >
+            <div class="destination-info">
+              <h3>Kerala</h3>
+              <p>5 days · India</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="container about-grid">
+        <img
+          class="about-image"
+          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85"
+          alt="Snow-covered mountain peaks"
+        >
+
+        <div class="about-content">
+          <p class="eyebrow">Travel your way</p>
+          <h2>We plan the details. You live the story.</h2>
+          <p>
+            AXY OFFICIAL helps you discover new destinations and plan
+            unforgettable experiences. Tell us what you enjoy, and start
+            shaping a trip that suits your interests, time, and budget.
+          </p>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <h3>Trips made for you</h3>
+              <p>Travel ideas shaped around your interests and budget.</p>
+            </article>
+            <article class="feature-card">
+              <h3>Local know-how</h3>
+              <p>Helpful guidance to help you make the most of your trip.</p>
+            </article>
+            <article class="feature-card">
+              <h3>Clear pricing</h3>
+              <p>Understand your package details before you book.</p>
+            </article>
+            <article class="feature-card">
+              <h3>Here to help</h3>
+              <p>Get support while planning your next adventure.</p>
+            </article>
           </div>
-          <!-- Nav Bar Start -->
-          <div id="menu-list" class="menu-li">
-            <a href="https://github.com/shivamxd18">Github</a>
-            <a href="https://t.me/Still_inmyheart">Telegram</a>
-            <a href="">You Tube</a>
-            <a href="">Twitter</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="packages">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Pick your next escape</p>
+          <h2>Featured packages</h2>
+          <p>
+            These are sample packages. Contact us for dates, availability,
+            and a custom quote.
+          </p>
+        </div>
+
+        <div class="package-grid">
+          <article class="package-card">
+            <img
+              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85"
+              alt="Travelers exploring a scenic landscape"
+            >
+            <div class="package-content">
+              <p class="package-tag">India</p>
+              <h3>Mountain Escape</h3>
+              <p class="package-description">4 nights · Guided walks · Stay</p>
+              <p class="price">From ₹9,999</p>
+              <a class="button button-secondary" href="#contact">Ask about this trip</a>
+            </div>
+          </article>
+
+          <article class="package-card">
+            <img
+              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=85"
+              alt="Blue ocean waves on a tropical beach"
+            >
+            <div class="package-content">
+              <p class="package-tag">Island holiday</p>
+              <h3>Island Days</h3>
+              <p class="package-description">4 nights · Beach time · Stay</p>
+              <p class="price">From ₹19,999</p>
+              <a class="button button-secondary" href="#contact">Ask about this trip</a>
+            </div>
+          </article>
+
+          <article class="package-card">
+            <img
+              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=85"
+              alt="Mountain under a starry night sky"
+            >
+            <div class="package-content">
+              <p class="package-tag">Adventure</p>
+              <h3>Trail Adventure</h3>
+              <p class="package-description">2 nights · Trek · Local guide</p>
+              <p class="price">From ₹6,000</p>
+              <a class="button button-secondary" href="#contact">Ask about this trip</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container contact-panel">
+        <div class="contact-info">
+          <p class="eyebrow">Let’s connect</p>
+          <h2>Find AXY OFFICIAL online</h2>
+          <p>
+            Follow us or send a message on your preferred platform. Replace
+            the sample links below with your social media profile links.
+          </p>
+
+          <div class="social-links">
+            <!-- Replace these sample URLs with your real profile links. -->
+            <a href="https://t.me/YOUR_TELEGRAM" target="_blank" rel="noopener noreferrer">
+              <span class="social-icon" aria-hidden="true">➤</span>
+              <span>Telegram</span>
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a href="https://instagram.com/YOUR_INSTAGRAM" target="_blank" rel="noopener noreferrer">
+              <span class="social-icon" aria-hidden="true">◎</span>
+              <span>Instagram</span>
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a href="https://youtube.com/@YOUR_YOUTUBE" target="_blank" rel="noopener noreferrer">
+              <span class="social-icon" aria-hidden="true">▶</span>
+              <span>YouTube</span>
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
-        <div class="email">
-          <!-- Email ID here -->
-          <a href="axyofficial@gmail.com.com"><i class="far fa-envelope"></i></a>
-        </div>
-        <div class="logo">
-          <!-- LOGO Here -->
-          <img src="https://cdn.phototourl.com/member/2026-10-03-e91c54f4-fce9-4261-b92c-58a46e5a6e38.jpg">
-        </div>
-        <div class="name">
-          <h2>Axy Earnings</h2> <!--  Enter your name here. -->
-          <p>Still_inmyheart</p> <!--  Enter your username here. -->
+
+        <div class="form-area">
+          <h3>Send us an enquiry</h3>
+          <p class="form-note">
+            Fill in the form and your email app will open with your message.
+          </p>
+
+          <form class="contact-form" id="contactForm">
+            <label>
+              Name
+              <input name="name" type="text" placeholder="Your name" required>
+            </label>
+
+            <label>
+              Email
+              <input name="email" type="email" placeholder="you@example.com" required>
+            </label>
+
+            <label class="full-width">
+              Phone number
+              <input name="phone" type="tel" placeholder="+91">
+            </label>
+
+            <label class="full-width">
+              Tell us about your trip
+              <textarea
+                name="message"
+                placeholder="Destination, dates, group size..."
+                required
+              ></textarea>
+            </label>
+
+            <button class="button button-primary" type="submit">Send enquiry</button>
+            <p class="form-status full-width" id="formStatus" role="status"></p>
+          </form>
         </div>
       </div>
-      <div class="bottom">
-        <div class="details">
-          <h2>About</h2>
-          <hr>
-          <br>
-          <!-- Info here -->
-          <pre><p class="info" >•Unlimited Earning  •Task Agents</p></pre>
-          </pre>
-        </div>
-        <div class="social">
+    </section>
+  </main>
 
-          <!--  Enter ur social media links here -->
-          <a href="https://github.com/shivamxd18"><i class="fab fa-github"></i></a>
-          <a href="https://t.me/Still_inmyheart"><i class="fab fa-telegram"></i></a>
-          <a href="https://www.youtube.com/channel/UCFalZWbbWdo0wxnJXobGLLg"><i class="fab fa-youtube"></i></a>
-          <a href=""><i class="fab fa-twitter"></i></a>
-
-          <!-- Some other social media icons copy it from below and paste it above
-
-          <a href=""><i class="fab fa-linkedin"></i></a>
-          <a href=""><i class="fab fa-twitter"></i></a>
-          <a href=""><i class="fas fa-coffee"></i></a>
-          <a href=""><i class="fab fa-instagram"></i></a> 
-
-          -->
-        </div>
-        <div class="btns">
-          <div class="btn1"><a class="follow" href="https:"https://t.me/Still_inmyheart" target="_blank">FOLLOW</a></div>
-          <div class="btn2"><a class="more" href="https://t.me/Still_inmyheart" target="_blank">MORE</a></div>
-        </div>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <a class="brand footer-brand" href="#home">AXY <span>OFFICIAL</span></a>
+        <p>Make your next journey a good one.</p>
       </div>
+      <p>© <span id="year"></span> AXY OFFICIAL. All rights reserved.</p>
     </div>
-  </section>
-  <script src="main.js"></script>
+  </footer>
 </body>
-
 </html>
