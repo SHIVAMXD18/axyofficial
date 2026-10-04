@@ -66,7 +66,6 @@ function updateCardHtml(update, showDelete = false) {
   `;
 }
 
-/* Public homepage */
 async function loadPublicUpdates() {
   const list = $("#updatesList");
   if (!list) return;
@@ -89,6 +88,7 @@ async function loadPublicUpdates() {
   list.innerHTML = data.map((item) => updateCardHtml(item)).join("");
 }
 
+/* Homepage menu and updates */
 if (page === "home") {
   const menuButton = $("#menuButton");
   const navLinks = $("#navLinks");
@@ -144,10 +144,7 @@ if (page === "admin") {
   async function setAdminView(isLoggedIn) {
     loginForm.hidden = isLoggedIn;
     publisher.hidden = !isLoggedIn;
-
-    if (isLoggedIn) {
-      await loadAdminUpdates();
-    }
+    if (isLoggedIn) await loadAdminUpdates();
   }
 
   supabaseClient.auth.getSession().then(({ data }) => {
@@ -197,7 +194,6 @@ if (page === "admin") {
 
     if (buttonText || rawButtonUrl) {
       buttonUrl = safeWebUrl(rawButtonUrl);
-
       if (!buttonText || !buttonUrl) {
         publishMessage.textContent =
           "For a button, enter both its text and a valid http/https link.";
