@@ -3,223 +3,55 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="AXY OFFICIAL shares task, deal, and free-item updates.">
-  <title>AXY OFFICIAL | Discover more</title>
-
+  <meta name="theme-color" content="#09090d">
+  <meta name="description" content="AXY OFFICIAL shares educational guides about online tasks and app offers. Verify every offer and stay safe.">
+  <title>AXY OFFICIAL — Learn. Verify. Decide.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="/script.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body data-page="home">
-  <header class="site-header">
-    <nav class="container nav">
-      <a class="brand" href="/">
-        <span class="brand-mark">A</span>
-        <span>AXY <b>OFFICIAL</b></span>
-      </a>
-
-      <button class="menu-button" id="menuButton" type="button"
-        aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-
-      <div class="nav-links" id="navLinks">
-        <a href="#guides">Guides</a>
-        <a href="#updates">Updates</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </div>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home"><img src="assets/axyimasge.jpg" alt="AXY Official logo"><span>AXY <b>OFFICIAL</b></span></a>
+    <button class="menu-button" aria-label="Open navigation" aria-expanded="false"><i></i><i></i></button>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#guides">Guides</a><a href="#steps">How it works</a><a href="#updates">Updates</a><a href="#contact">Contact</a>
+      <a class="nav-telegram" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener">Join Telegram <span>↗</span></a>
     </nav>
   </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-glow hero-glow-one"></div>
-      <div class="hero-glow hero-glow-two"></div>
-
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="eyebrow-dot"></span> AXY community hub</p>
-          <h1>Find the offer.<br><span>Know the details.</span></h1>
-          <p class="hero-description">
-            Telegram task-bot guides, app deals, loot, and free-item updates
-            for students and anyone exploring online opportunities.
-          </p>
-
-          <div class="hero-actions">
-            <a class="button button-lime"
-              href="https://t.me/+XpjEYnfmj3g2ZTU1"
-              target="_blank" rel="noopener noreferrer">
-              Start Earning <span aria-hidden="true">↗</span>
-            </a>
-            <a class="button button-glass" href="#updates">See latest updates</a>
-          </div>
-
-          <p class="hero-disclaimer">
-            Offers change. Check the official app for current terms. Earnings aren’t guaranteed.
-          </p>
-        </div>
-
-        <div class="hero-art" aria-label="AXY Official graphic">
-          <div class="orbit orbit-one"></div>
-          <div class="orbit orbit-two"></div>
-          <div class="hero-sticker sticker-top">TASKS <span>↗</span></div>
-          <div class="hero-sticker sticker-bottom">DEALS · LOOT · GUIDES</div>
-          <div class="hero-monogram">A<span>.</span></div>
-        </div>
+  <main id="home">
+    <section class="hero">
+      <div class="hero-glow glow-red"></div><div class="hero-glow glow-blue"></div>
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> AXY OFFICIAL / LEARN &amp; EARN SAFELY</div>
+        <h1>Find your<br>next <em>smart</em><br>step.</h1>
+        <p>Simple educational guides about online tasks, Telegram bots and app offers. Understand the steps and terms before you decide.</p>
+        <div class="hero-actions"><a class="button button-neon" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener">Start learning <span>↗</span></a><a class="plain-link" href="#guides">Explore guides <span>↓</span></a></div>
+        <div class="hero-footnote"><span class="spark">✦</span> No guaranteed earnings. Always verify offers yourself.</div>
       </div>
-
-      <div class="hero-bottom container">
-        <span>Explore. Verify. Decide.</span>
-        <span>SCROLL TO EXPLORE ↓</span>
-      </div>
+      <div class="hero-logo-wrap"><div class="logo-halo halo-a"></div><div class="logo-halo halo-b"></div><div class="logo-frame"><img src="assets/axyimasge.jpg" alt="AXY Official neon logo"></div><span class="orbit-tag tag-one">TASK GUIDES</span><span class="orbit-tag tag-two">SAFETY FIRST</span><span class="orbit-tag tag-three">AXY / 01</span></div>
+      <a class="scroll-down" href="#guides"><span></span> SCROLL TO EXPLORE</a>
     </section>
 
-    <section class="section-wrap guides-section" id="guides">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow dark-eyebrow">Explore AXY</p>
-            <h2 class="section-title">A little more useful.<br><span>A little less confusing.</span></h2>
-          </div>
-          <p class="section-intro">
-            Information about tasks and app offers. Verify details with the
-            official platform before participating.
-          </p>
-        </div>
+    <section class="trust-strip"><div><b>01</b><span>LEARN THE PROCESS</span></div><i>✦</i><div><b>02</b><span>VERIFY EACH OFFER</span></div><i>✦</i><div><b>03</b><span>PROTECT YOUR DETAILS</span></div></section>
 
-        <div class="guide-grid">
-          <article class="guide-card guide-card-dark">
-            <span class="guide-number">01 / TELEGRAM</span>
-            <div class="guide-symbol">➤</div>
-            <h3>Task bot<br>guides</h3>
-            <p>What to review before using a bot, accepting tasks, or following links.</p>
-            <a href="https://t.me/+XpjEYnfmj3g2ZTU1"
-              target="_blank" rel="noopener noreferrer" aria-label="Visit Telegram">↗</a>
-          </article>
+    <section class="section intro" id="about"><div class="section-label"><span>01 / THE AXY APPROACH</span><span>INFORMATION WITHOUT THE HYPE</span></div><div class="intro-grid"><h2>Clear guides<br>for <em>real people.</em></h2><div><p>We explain task-based earning topics and app promotions in simple steps for students and beginners. Offers can change, so always confirm the latest details with the official app or service.</p><a class="under-link" href="#steps">Our safety checklist <span>↘</span></a></div></div><div class="value-grid"><article><span>01 — CHECK</span><h3>Read every term</h3><p>Check eligibility, deadlines, fees and conditions before joining.</p></article><article><span>02 — VERIFY</span><h3>Use official sources</h3><p>Open the original app or company site to confirm an offer is real.</p></article><article><span>03 — DECIDE</span><h3>Move at your pace</h3><p>Skip anything that pressures you, asks for OTPs or feels unclear.</p></article></div></section>
 
-          <article class="guide-card guide-card-lime">
-            <span class="guide-number">02 / FOOD OFFERS</span>
-            <div class="guide-symbol">%</div>
-            <h3>Swiggy &<br>Zomato deals</h3>
-            <p>Check dates, minimum orders, eligibility, and terms in the official app.</p>
-            <a href="https://t.me/+XpjEYnfmj3g2ZTU1"
-              target="_blank" rel="noopener noreferrer" aria-label="Visit Telegram">↗</a>
-          </article>
+    <section class="section guides" id="guides"><div class="section-label"><span>02 / GUIDE LIBRARY</span><span>CHOOSE A TOPIC</span></div><div class="section-heading"><h2>Explore the<br><em>playbook.</em></h2><p>Educational information only. Third-party availability and rules can change at any time.</p></div><div class="guide-grid"><article class="guide-card card-red"><div class="guide-top"><span>01 / TASKS</span><span>↗</span></div><div class="guide-art art-task"><div class="task-tile"><span>AXY TASK NOTE</span><b>Read.<br>Check.<br>Complete.</b><i>✓</i></div></div><h3>Telegram task<br>guides</h3><a class="guide-bottom" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener">OPEN TELEGRAM <span>↗</span></a></article><article class="guide-card card-violet"><div class="guide-top"><span>02 / APP OFFERS</span><span>↗</span></div><div class="guide-art art-offer"><div class="offer-ticket"><small>OFFER CHECK</small><b>Terms<br>first.</b><span>✦</span></div><div class="offer-orbit"></div></div><h3>App promotions<br>&amp; rewards</h3><a class="guide-bottom" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener">VIEW GUIDES <span>↗</span></a></article><article class="guide-card card-blue"><div class="guide-top"><span>03 / SAFETY</span><span>↗</span></div><div class="guide-art art-safe"><div class="safe-shield">✓</div><span class="safe-ring"></span><span class="safe-cross">✳</span></div><h3>Scam awareness<br>&amp; account safety</h3><a class="guide-bottom" href="#steps">CHECK THE LIST <span>↗</span></a></article></div></section>
 
-          <article class="guide-card guide-card-purple">
-            <span class="guide-number">03 / GROCERY</span>
-            <div class="guide-symbol">＋</div>
-            <h3>Blinkit &<br>free items</h3>
-            <p>Review availability, delivery areas, and deal conditions before ordering.</p>
-            <a href="https://t.me/+XpjEYnfmj3g2ZTU1"
-              target="_blank" rel="noopener noreferrer" aria-label="Visit Telegram">↗</a>
-          </article>
-        </div>
-      </div>
-    </section>
+    <section class="section steps" id="steps"><div class="section-label"><span>03 / BEFORE YOU START</span><span>FOUR QUICK CHECKS</span></div><div class="steps-layout"><div><h2>Pause.<br>Verify.<br><em>Then choose.</em></h2><p>Use this checklist before trying a task, bot or promotion.</p><a class="button button-outline" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener">Get AXY updates <span>↗</span></a></div><div class="check-list"><article><b>01</b><div><h3>Read all the conditions</h3><p>Look for eligibility, location, time limits, fees and withdrawal rules.</p></div><span>＋</span></article><article><b>02</b><div><h3>Confirm the official source</h3><p>Check the offer inside the verified app or service website.</p></div><span>＋</span></article><article><b>03</b><div><h3>Keep private data private</h3><p>Never share an OTP, password, PIN or account access with a bot or stranger.</p></div><span>＋</span></article><article><b>04</b><div><h3>Ignore pressure and promises</h3><p>Skip guaranteed-profit claims, suspicious deposits and rushed decisions.</p></div><span>＋</span></article></div></div></section>
 
-    <section class="section-wrap updates-section" id="updates">
-      <div class="container">
-        <div class="section-title-row">
-          <div>
-            <p class="eyebrow dark-eyebrow">Fresh from AXY</p>
-            <h2 class="section-title">Latest updates<span class="title-period">.</span></h2>
-          </div>
-          <p class="section-intro">New offers and announcements will appear here.</p>
-        </div>
+    <section class="section updates" id="updates"><div class="section-label"><span>04 / LATEST FROM AXY</span><span>UPDATES &amp; ANNOUNCEMENTS</span></div><div class="section-heading"><h2>Notes from<br><em>the channel.</em></h2><a class="under-link" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener">Follow Telegram <span>↗</span></a></div><div class="update-list" id="update-list"><article class="update-row"><time>WELCOME</time><div><small>START HERE</small><h3>Welcome to AXY OFFICIAL</h3><p>We share learning resources about online tasks and app offers. Verify terms with official sources.</p></div><span>✦</span></article><article class="update-row"><time>SAFETY</time><div><small>REMINDER</small><h3>Never share your OTP or password</h3><p>Keep your account information private, even when a message appears urgent.</p></div><span>✦</span></article></div></section>
 
-        <div class="updates-list" id="updatesList" aria-live="polite">
-          <p class="loading-text">Loading updates…</p>
-        </div>
-      </div>
-    </section>
+    <section class="join-band"><div class="join-glow"></div><div class="join-inner"><span>STAY CURIOUS. STAY CAREFUL.</span><h2>Get the next<br><em>guide on Telegram.</em></h2><p>Follow AXY OFFICIAL for educational updates and new guides.</p><a class="button button-light" href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener">Join the channel <span>↗</span></a></div></section>
 
-    <section class="section-wrap about-section" id="about">
-      <div class="container about-layout">
-        <div class="about-art">
-          <span class="about-stamp">AXY<br>OFFICIAL</span>
-          <div class="about-big-type">STAY<br><span>CURIOUS.</span></div>
-          <span class="about-small-type">LEARN BEFORE YOU LEAP ↗</span>
-        </div>
-
-        <div class="about-copy">
-          <p class="eyebrow">Why AXY</p>
-          <h2>Understand the offer<br>before you jump in.</h2>
-          <p>
-            AXY OFFICIAL shares educational information about Telegram task
-            bots, app deals, loot, and free-item promotions. Verify every
-            opportunity yourself and make your own decision.
-          </p>
-          <ul class="about-list">
-            <li><span>01</span> Read the official offer terms.</li>
-            <li><span>02</span> Verify the app, bot, and source.</li>
-            <li><span>03</span> Keep passwords and OTPs private.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-wrap disclaimer-section" id="disclaimer">
-      <div class="container disclaimer-card">
-        <div class="disclaimer-symbol">!</div>
-        <div>
-          <p class="eyebrow">Important information</p>
-          <h2>Disclaimer</h2>
-          <p>
-            AXY OFFICIAL content is for educational and informational purposes
-            only. We do not guarantee earnings, rewards, savings, or any result.
-            Third-party offers and task bots may change, expire, or have conditions.
-          </p>
-          <p>
-            Check details through the official app or service before participating.
-            Never share passwords, OTPs, or sensitive payment information with
-            unverified people, bots, or websites.
-          </p>
-          <p>
-            AXY OFFICIAL is not responsible for fraud, scams, losses, or damage
-            related to third-party apps, bots, links, tasks, or offers. Any
-            investment-related app or offer is not financial advice. Invest at
-            your own risk and research independently.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-wrap contact-section" id="contact">
-      <div class="container contact-layout">
-        <div>
-          <p class="eyebrow">Stay connected</p>
-          <h2>Keep in the loop.</h2>
-          <p>Follow AXY OFFICIAL or email us with questions about the guides.</p>
-        </div>
-
-        <div class="contact-links">
-          <a href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener noreferrer">
-            <span>Telegram channel</span><b>↗</b>
-          </a>
-          <a href="https://www.instagram.com/officialaxy?stkn=MWs2Zjhocm0wZXQ3ZQ==" target="_blank" rel="noopener noreferrer">
-            <span>Instagram</span><b>↗</b>
-          </a>
-          <a href="mailto:axymanager@gmail.com">
-            <span>axymanager@gmail.com</span><b>↗</b>
-          </a>
-        </div>
-      </div>
-    </section>
+    <section class="section disclaimer"><div class="disclaimer-mark">!</div><div><small>PLEASE READ / DISCLAIMER</small><h2>Educational information only.</h2><p>AXY OFFICIAL shares information for educational purposes. We do not guarantee earnings, rewards, free products or results. Third-party apps, websites, bots and offers may change or have separate terms. Verify claims through official sources and never share passwords, OTPs, PINs or sensitive personal details. If any investment-related app or service is listed, you invest entirely at your own risk; this is not financial advice. AXY OFFICIAL is not responsible for fraud, scams, losses or actions taken on third-party platforms. Follow all laws and platform terms.</p></div></section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <a class="brand" href="/">
-        <span class="brand-mark">A</span><span>AXY <b>OFFICIAL</b></span>
-      </a>
-      <span>© <span id="year"></span> AXY OFFICIAL</span>
-    </div>
-  </footer>
+  <footer class="footer" id="contact"><div class="footer-top"><a class="brand" href="#home"><img src="assets/axyimasge.jpg" alt=""><span>AXY <b>OFFICIAL</b></span></a><p>Learn the process. Verify the offer. Decide for yourself.</p><a class="back-top" href="#home">BACK TO TOP ↑</a></div><div class="footer-bottom"><span>© <span id="year"></span> AXY OFFICIAL</span><div class="socials"><a href="https://t.me/+XpjEYnfmj3g2ZTU1" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="m21.4 4.5-3.2 15c-.2 1.1-.8 1.4-1.7.9l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.4-4.8 8.7-7.9c.4-.4-.1-.6-.6-.2L6.4 13.6 1.8 12c-1-.3-1-1 .2-1.4l18-6.9c.8-.3 1.6.2 1.4.8Z"/></svg><span>Telegram</span></a><a href="https://www.instagram.com/officialaxy?stkn=MWs2Zjhocm0wZXQ3ZQ==" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1"/></svg><span>Instagram</span></a><a href="mailto:axymanager@gmail.com" aria-label="Email AXY"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span>Email</span></a></div><span>EDUCATIONAL ONLY</span></div></footer>
+  <script src="script.js"></script>
+  <script type="module" src="updates.js"></script>
 </body>
 </html>
