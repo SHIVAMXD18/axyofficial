@@ -12,6 +12,7 @@ const supabaseClient = window.supabase.createClient(
 const $ = (selector) => document.querySelector(selector);
 const page = document.body.dataset.page;
 
+
 if ($("#year")) {
   $("#year").textContent = new Date().getFullYear();
 }
